@@ -1,0 +1,75 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+*{
+  margin: 0;
+  padding: 0;
+}
+
+body{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.card{
+  font-family: 'Poppins', sans-serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: yellow;
+  width: 500px;
+  height: 500px;
+  border-radius: 15px;
+  padding: 20px;
+  .bingo{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .text{
+      font-size: 21px;
+      margin-bottom: 20px;
+      span{
+        font-size: 50px;
+      }
+    }
+    .wrapper{
+      display: flex;
+      gap: 35px;
+      .column{
+        div{
+          width: 100px;
+          height: 100px;
+          // background: brown;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          border-radius: 10px;
+          color: white;
+          margin-bottom: 20px;
+        }
+      }
+    }
+  }
+  .shuffle_btn{
+    button{
+      background-color: rgb(255, 255, 255);
+      border: none;
+      padding: 20px 40px;
+      border-radius: 15px;
+      color: black;
+      font-family: 'Poppins', sans-serif;
+      cursor: pointer;
+      a{
+        list-style: none;
+        
+      }
+    }
+  }
+}
+
+
+
+  
