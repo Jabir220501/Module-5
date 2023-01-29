@@ -1,3 +1,7 @@
+body{
+    overflow: hidden;
+}
+
 .login-box {
     position: absolute;
     top: 50%;

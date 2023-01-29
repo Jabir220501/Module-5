@@ -1,55 +1,72 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="./assets/css/style.css">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Webshop</title>
+  <link rel="stylesheet" href="./assets/css/style.css">
 </head>
 
 <body>
-<nav>
-  <ul>
-    <li>&#9776;</li>
-    <li><a href="./shopping_cart.php">Shopping-cart</a></li>
-    <li class="logo">LOGO</li>
-    <li>LOGIN / REGISTER</li>
-    <li><i class="fas fa-shopping-bag"></i></li>
-  </ul>
-</nav>
-<main>
-  <div class="sidebar">
+  <nav>
     <ul>
-      <li>STORE LOCATION</li>
-      <li>ABOUT</li>
+      <li><a href="./shopping_cart.php">Shopping-cart</a></li>
+      <li class="logo">Webshop</li>
+      <?php
+      if (isset($_SESSION["ingelogd"])) {
+        if ($_SESSION["ingelogd"] != false) {
+          ?>
+          <li><a href="./assets/server/logout.php">Logout</a></li>
+          <li>
+            <?php echo $_SESSION["email"] ?>
+          </li>
+          <?php
+        } else {
+          ?>
+          <a style="margin-right: 15px;" href="./login.php">Login</a>
+          <?php
+        }
+      } else {
+        ?>
+        <a style="margin-right: 15px;" href="./login.php">Login</a>
+        <?php
+      }
+      ?>
     </ul>
-    <ul class="socials">
-      <li><i class="fab fa-facebook-f"></i></li>
-      <li><i class="fab fa-instagram"></i></li>
-      <li><i class="fab fa-twitter"></i></li>
-      <li><i class="fab fa-pinterest-p"></i></li>
-    </ul>
-  </div>
-  <div class="container">
-    <ul class="query">
-      <li>Ready to wear</li>
-      <li>Color</li>
-      <li>Material</li>
-    </ul>
-    <div class="boxes">
-      <div class="box"><img src="https://via.placeholder.com/300" alt="#"></div>
-      <div class="box"><img src="https://via.placeholder.com/300" alt="#"></div>
-      <div class="box"><img src="https://via.placeholder.com/300" alt="#"></div>
-      <div class="box"><img src="https://via.placeholder.com/300" alt="#"></div>
-      <div class="box"><img src="https://via.placeholder.com/300" alt="#"></div>
-      <div class="box"><img src="https://via.placeholder.com/300" alt="#"></div>
-      <div class="box"><img src="https://via.placeholder.com/300" alt="#"></div>
-      <div class="box"><img src="https://via.placeholder.com/300" alt="#"></div>
-      <div class="box"><img src="https://via.placeholder.com/300" alt="#"></div>
-      <div class="box"><img src="https://via.placeholder.com/300" alt="#"></div>
+  </nav>
+  <main>
+    <div class="container">
+      <div class="boxes">
+
+        <?php
+        for ($n = 1; $n <= 10; $n++) {
+
+          ?>
+
+          <form method="POST" action="./assets/server/addtocart.php">
+            <div class="box">
+              <p style="margin-bottom: 5px;">
+                <?php echo "Item " . $n ?>
+              </p>
+              <img src="https://via.placeholder.com/300" alt="#">
+              <input type="hidden" name="productname" value="<?php echo "Item " . $n ?>">
+              <input style="margin-top: 10px;" type="submit" value="add to cart">
+            </div>
+          </form>
+
+          <?php
+        }
+        ?>
+
+      </div>
     </div>
-  </div>
-</main>
+  </main>
 </body>
+
 </html>
